@@ -1,3 +1,58 @@
-/*
-Custom Css
-*/
+/* Carousel Container */
+#carousel-related-product {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 20px; /* Space between the cards */
+    justify-content: flex-start; /* Align items to the left */
+    margin-top: 20px;
+}
+
+/* Individual Product Cards */
+.product-wap {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.10);
+    flex: 1 1 calc(33.333% - 20px); /* 3 items per row */
+    max-width: 300px; /* Prevent cards from exceeding this width */
+    box-sizing: border-box; /* Ensure padding doesn't mess up width */
+    margin-bottom: 20px; /* Space between rows */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for product cards */
+.product-wap:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Card structure for responsive behavior */
+.card.product-wap {
+    width: 100%;
+    height: 100%;
+}
+
+/* Product Title Font Size */
+.product-wap .h3, .product-wap li, .product-wap i, .product-wap p {
+    font-size: 16px !important;
+}
+
+/* Large Devices (Desktops, 992px and up) */
+@media (min-width: 992px) {
+    #carousel-related-product {
+        justify-content: space-between; /* Spread out items evenly */
+    }
+    .product-wap {
+        flex: 1 1 calc(25% - 20px); /* 4 items per row on larger screens */
+    }
+}
+
+/* Extra Large Devices (1200px and up) */
+@media (min-width: 1200px) {
+    .product-wap {
+        flex: 1 1 calc(20% - 20px); /* 5 items per row */
+    }
+}
+
+/* Mobile Devices (Less than 576px) */
+@media (max-width: 575px) {
+    .product-wap {
+        flex: 1 1 100%; /* 1 item per row on smaller screens */
+    }
+}

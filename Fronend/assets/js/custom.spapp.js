@@ -4,11 +4,12 @@ $(document).ready(function() {
   // Define routes
   app.route({
     view: 'home',
-    load: "index.html"
+    load: "home.html"
   });
   app.route({ view: 'about', load: 'about.html' });
   app.route({ view: 'shop', load: 'shop.html' });
   app.route({ view: 'contact', load: 'contact.html' });
+  app.route({view:'shop-single', load: 'shop-single.html'})
 
   // Run the app
   app.run();
