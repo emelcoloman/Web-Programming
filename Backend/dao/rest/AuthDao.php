@@ -13,7 +13,17 @@ class AuthDao extends BaseDao {
 
 
    public function get_user_by_email($email) {
-       $query = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
-       return $this->query_unique($query, ['email' => $email]);
-   }
+    $sql = "SELECT id, name, email, password, role, permissions FROM users WHERE email = ?";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if ($user && $user['permissions']) {
+        $user['permissions'] = json_decode($user['permissions'], true);
+    } else {
+        $user['permissions'] = [];
+    }
+
+    return $user;
+}
 }
